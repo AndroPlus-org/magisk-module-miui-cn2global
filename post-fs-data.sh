@@ -9,3 +9,16 @@ MODDIR=${0%/*}
 
 #resetprop ro.boot.hwc GLOBAL
 #resetprop ro.boot.hwcountry GLOBAL
+
+maybe_set_prop() {
+    local prop="$1"
+    local contains="$2"
+    local value="$3"
+
+    if [[ "$(getprop "$prop")" == *"$contains"* ]]; then
+        resetprop "$prop" "$value"
+    fi
+}
+
+maybe_set_prop gsm.sim.operator.numeric "," "44011,44011"
+maybe_set_prop gsm.sim.operator.iso-country "," "jp,jp"
