@@ -22,3 +22,6 @@ maybe_set_prop() {
 
 maybe_set_prop gsm.sim.operator.numeric "," "44011,44011"
 maybe_set_prop gsm.sim.operator.iso-country "," "jp,jp"
+
+# Change to MIUI Global (but less features)
+# resetprop ro.product.mod_device "$(getprop "ro.product.mod_device")_global"
