@@ -1,4 +1,4 @@
-## Patch for Xiaomi MIUI China
+## Translation Patch for Xiaomi MIUI China
 
 This is a Magisk module to add translation to the Chinese version of MIUI.  
 This module also enables Google Location history and Nearby share.
