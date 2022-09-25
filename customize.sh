@@ -20,7 +20,7 @@ else
     ui_print "services.cn.google.xm not found, skipped"
 fi
 
-DEF_DIALER=`pm list packages|grep com.google.android.dialer`
+DEF_DIALER=`cmd package resolve-activity --brief -a android.intent.action.DIAL | grep com.google.android.dialer`
 if [ -n "$DEF_DIALER" ]; then
     cp -a ${MODPATH}/cn2g-optional/GmsConfigOverlayComms.apk ${MODPATH}/system/product/overlay
     ui_print ""
