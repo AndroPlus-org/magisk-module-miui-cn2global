@@ -5,7 +5,7 @@ This module also enables Google Location history and Nearby share.
 
 Download magisk-module-miui-cn2global.zip, install this module from the Modules tab of the Magisk app and restart, then you will be able to select your language in the language settings.
 
-I confirmed on MIUI 13.
+I tested on MIUI 14.
 
 ## Prohibitions
 
@@ -20,7 +20,7 @@ Google ロケーション履歴やニアバイシェアも有効化されます�
 
 magisk-module-miui-cn2global.zip をダウンロードして Magisk アプリのモジュールタブからこのモジュールをインストール・再起動することで、言語設定で日本語が選べるようになります。
 
-MIUI 13 にて動作確認しています。
+MIUI 14 にて動作確認しています。
 
 ## 禁止事項
 
