@@ -25,15 +25,3 @@ maybe_set_prop gsm.sim.operator.iso-country "," "jp,jp"
 
 # Change to MIUI Global (but less features)
 # resetprop ro.product.mod_device "$(getprop "ro.product.mod_device")_global"
-
-# Fix NFC on Xiaomi MIUI 14 (Android 13)
-lastVersion=$(getprop ro.build.version.incremental)
-lastVersionFilePath=$MODDIR/lastVersion
-productDirPath=$MODDIR/system/product
-if [ -d "/system/product/pangu/system" ] ; then
-	if [ ! -f $lastVersionFilePath ] || [ ! -d "$productDirPath"  ] || [ $(cat $lastVersionFilePath) != $lastVersion ] ; then
-	mkdir -p ${productDirPath}
-	cp -p -a -R /system/product/pangu/system/* ${productDirPath}
-	echo "$lastVersion" >$lastVersionFilePath
-	fi
-fi
