@@ -1,28 +1,42 @@
 REPLACE="
 "
 
-remove_limitation() {
-mkdir -p "$1"
-
-cat >"$1/$2" <<EOF
+# Taken from unlock-cn-gms
+# Credit: Howard20181, yujincheng08 https://github.com/yujincheng08/unlock-cn-gms
+PERMISSIONS_PATH=/etc/permissions
+SYSTEM_PATH=/system
+SYSTEM_EXT_PATH=$SYSTEM_PATH/system_ext
+PRODUCT_PATH=$SYSTEM_PATH/product
+VENDOR_PATH=$SYSTEM_PATH/vendor
+OPLUS_BIGBALL_PATH=/my_bigball
+OPLUS_BIGBALL_VENDOR_PATH=/mnt/vendor$OPLUS_BIGBALL_PATH
+ROOT_LIST=""$SYSTEM_PATH$PERMISSIONS_PATH" "$PRODUCT_PATH$PERMISSIONS_PATH" "$VENDOR_PATH$PERMISSIONS_PATH" "$SYSTEM_EXT_PATH$PERMISSIONS_PATH" "$OPLUS_BIGBALL_PATH$PERMISSIONS_PATH" "$OPLUS_BIGBALL_VENDOR_PATH$PERMISSIONS_PATH""
+FILE_LIST="services.cn.google.xml cn.google.services.xml oplus_google_cn_gms_features.xml"
+for ROOT in $ROOT_LIST; do
+    for FILE in $FILE_LIST; do
+        if [ -f "$ROOT/$FILE" ]; then
+            PERMISSION_PATH="$MODPATH$ROOT"
+            FILE_NAME=$FILE
+            ui_print "- PATH $ROOT/$FILE_NAME"
+            mkdir -p "$PERMISSION_PATH"
+            cat >"$PERMISSION_PATH/$FILE_NAME" <<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This is the standard set of features for devices that support the CN GMSCore. -->
 EOF
-}
+            [ "$ROOT" = "$OPLUS_BIGBALL_PATH$PERMISSIONS_PATH" ] || [ "$ROOT" = "$OPLUS_BIGBALL_VENDOR_PATH$PERMISSIONS_PATH" ]  && {
+                if [ ! -f "$MODPATH/post-fs-data.sh" ]; then
+                    cat >"$MODPATH/post-fs-data.sh" <<EOF
+#!/system/bin/sh
+MODDIR=\${0%/*}
+EOF
+                fi
+                echo "mount -o ro,bind \$MODDIR$ROOT/$FILE_NAME $ROOT/$FILE_NAME" >> "$MODPATH/post-fs-data.sh"
+            }
+        fi
+    done
+done
 
-if [ -f "/system/product/etc/permissions/cn.google.services.xml" ]; then
-    PERMISSION_PATH="${MODPATH}/system/product/etc/permissions"
-	remove_limitation "${PERMISSION_PATH}" "cn.google.services.xml"
-elif [ -f "/system/product/etc/permissions/services.cn.google.xml" ]; then
-    PERMISSION_PATH="${MODPATH}/system/product/etc/permissions"
-	remove_limitation "${PERMISSION_PATH}" "services.cn.google.xml"
-elif [ -f "/system/etc/permissions/services.cn.google.xml" ]; then
-    PERMISSION_PATH="${MODPATH}/system/etc/permissions"
-	remove_limitation "${PERMISSION_PATH}" "services.cn.google.xml"
-else
-    ui_print "services.cn.google.xm not found, skipped"
-fi
-
+# Set permissions for Google Dialer if it's default app
 DEF_DIALER=`cmd package resolve-activity --brief -a android.intent.action.DIAL | grep com.google.android.dialer`
 if [ -n "$DEF_DIALER" ]; then
     cp -a ${MODPATH}/cn2g-optional/GmsConfigOverlayComms.apk ${MODPATH}/system/product/overlay
