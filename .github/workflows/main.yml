@@ -14,8 +14,19 @@ jobs:
         type: 'zip'
         filename: 'magisk-module-miui-cn2global.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
+    - name: Archive Release without languages
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'magisk-module-miui-cn2global-no-languages.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig treble-overlay-*.apk'
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "magisk-module-miui-cn2global.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload Release without languages
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "magisk-module-miui-cn2global-no-languages.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
