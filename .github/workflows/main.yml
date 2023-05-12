@@ -23,10 +23,5 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "magisk-module-miui-cn2global.zip"
-        token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload Release without languages
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "magisk-module-miui-cn2global-no-languages.zip"
+        artifacts: "magisk-module-miui-cn2global.zip,magisk-module-miui-cn2global-no-languages.zip"
         token: ${{ secrets.GITHUB_TOKEN }}
