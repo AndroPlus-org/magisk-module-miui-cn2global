@@ -10,7 +10,7 @@ PRODUCT_PATH=/product
 VENDOR_PATH=/vendor
 OPLUS_BIGBALL_PATH=/my_bigball
 OPLUS_BIGBALL_VENDOR_PATH=/mnt/vendor$OPLUS_BIGBALL_PATH
-if [ "$KSU" ]; then
+if [ -z "$KSU" ]; then
     ROOT_LIST=""$SYSTEM_PATH$PERMISSIONS_PATH" "$PRODUCT_PATH$PERMISSIONS_PATH" "$VENDOR_PATH$PERMISSIONS_PATH" "$SYSTEM_EXT_PATH$PERMISSIONS_PATH" "$OPLUS_BIGBALL_PATH$PERMISSIONS_PATH" "$OPLUS_BIGBALL_VENDOR_PATH$PERMISSIONS_PATH""
     REMOVE=""
 else # Magisk
@@ -23,7 +23,7 @@ for ROOT in $ROOT_LIST; do
             PERMISSION_PATH="$MODPATH$ROOT"
             FILE_NAME=$FILE
             ui_print "- PATH $ROOT/$FILE_NAME"
-             if [ "$KSU" ] && { [ "$ROOT" != "$OPLUS_BIGBALL_PATH$PERMISSIONS_PATH" ] || [ "$ROOT" != "$OPLUS_BIGBALL_VENDOR_PATH$PERMISSIONS_PATH" ]; }; then
+            if [ -z "$KSU" ] && { [ "$ROOT" != "$OPLUS_BIGBALL_PATH$PERMISSIONS_PATH" ] || [ "$ROOT" != "$OPLUS_BIGBALL_VENDOR_PATH$PERMISSIONS_PATH" ]; }; then
                 REMOVE="$REMOVE $ROOT/$FILE_NAME"
             else
                 mkdir -p "$PERMISSION_PATH"
@@ -41,6 +41,7 @@ EOF
                     echo "mount -o ro,bind \$MODDIR$ROOT/$FILE_NAME $ROOT/$FILE_NAME" >>"$MODPATH/post-fs-data.sh"
                 }
             fi # End else
+        fi
     done
 done
 
