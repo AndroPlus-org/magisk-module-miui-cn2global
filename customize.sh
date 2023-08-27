@@ -3,6 +3,10 @@ REPLACE="
 
 # Taken from unlock-cn-gms
 # Credit: Howard20181, yujincheng08 https://github.com/yujincheng08/unlock-cn-gms
+PERMISSIONS_PATH=/etc/permissions
+SYSTEM_PATH=/system
+SYSTEM_EXT_PATH=$SYSTEM_PATH/system_ext
+PRODUCT_PATH=$SYSTEM_PATH/product
 VENDOR_PATH=$SYSTEM_PATH/vendor
 OPLUS_BIGBALL_PATH=/my_bigball
 OPLUS_BIGBALL_VENDOR_PATH=/mnt/vendor$OPLUS_BIGBALL_PATH
