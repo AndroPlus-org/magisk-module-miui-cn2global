@@ -1,7 +1,7 @@
 id=xiaomi-miui-conv
 name=Patch for Xiaomi MIUI China
-version=v14
-versionCode=14
+version=v15
+versionCode=15
 author=AndroPlus
 description=MIUI China to Global
 updateJson=https://raw.githubusercontent.com/AndroPlus-org/magisk-module-miui-cn2global/master/update.json
