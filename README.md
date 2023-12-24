@@ -1,11 +1,9 @@
-## Translation Patch for Xiaomi MIUI China
+## Translation Patch for Xiaomi HyperOS China
 
-This is a Magisk module to add translation to the Chinese version of MIUI.  
+This is a Magisk module to add translation to the Chinese version of Xiaomi HyperOS.  
 This module also enables Google Location history and Nearby share.
 
-Download magisk-module-miui-cn2global.zip, install this module from the Modules tab of the Magisk app and restart, then you will be able to select your language in the language settings.
-
-I tested on MIUI 14.
+Download magisk-module-hyperos-cn2global.zip, install this module from the Modules tab of the Magisk app and restart, then you will be able to select your language in the language settings.
 
 ## Prohibitions
 
@@ -15,12 +13,10 @@ For reasons of support, etc., commercial use of this module is prohibited. (exce
 In case of commercial use, 50% of the profit will be collected.
 
 ## 日本語説明
-中国版 MIUI に日本語翻訳を追加する Magisk モジュールです。    
+中国版 Xiaomi HyperOS に日本語翻訳を追加する Magisk モジュールです。    
 Google ロケーション履歴やニアバイシェアも有効化されます。
 
-magisk-module-miui-cn2global.zip をダウンロードして Magisk アプリのモジュールタブからこのモジュールをインストール・再起動することで、言語設定で日本語が選べるようになります。
-
-MIUI 14 にて動作確認しています。
+magisk-module-hyperos-cn2global.zip をダウンロードして Magisk アプリのモジュールタブからこのモジュールをインストール・再起動することで、言語設定で日本語が選べるようになります。
 
 ## 禁止事項
 
