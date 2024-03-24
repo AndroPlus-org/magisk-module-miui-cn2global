@@ -4,5 +4,5 @@
  This XML file declares installer eligible for committing stage install.
 -->
 <config>
-  <whitelisted-staged-installer package="com.android.vending" />
+  <whitelisted-staged-installer package="com.android.vending" isModulesInstaller="true" />
 </config>

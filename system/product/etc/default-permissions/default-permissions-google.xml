@@ -12,7 +12,8 @@
     <!-- For D2D Restore -->
     <permission name="android.permission.READ_CALL_LOG" fixed="false"/>
     <permission name="android.permission.WRITE_CALL_LOG" fixed="false"/>
-    <permission name="android.permission.ACCESS_FINE_LOCATION" fixed="false"/>
+    <permission name="android.permission.NEARBY_WIFI_DEVICES" fixed="false"/>
+    <permission name="android.permission.POST_NOTIFICATIONS" fixed="false"/>
   </exception>
 
   <exception
@@ -28,4 +29,25 @@
     <!-- Record audio -->
     <permission name="android.permission.RECORD_AUDIO" fixed="false"/>
   </exception>
+
+  <exception
+    package="com.google.android.marvin.talkback"
+    sha256-cert-digest="7B:5A:D5:51:80:A4:8A:1F:30:F3:53:77:C0:F9:E5:F9:11:BF:94:2F:B4:CF:83:EB:A2:55:A0:EB:F5:80:BE:EF">
+    <!-- Read phone status -->
+    <permission name="android.permission.READ_PHONE_STATE" fixed="false"/>
+    <!-- Bluetooth permissions -->
+    <permission name="android.permission.BLUETOOTH_CONNECT" fixed="false"/>
+    <permission name="android.permission.BLUETOOTH_SCAN" fixed="false"/>
+    <permission name="android.permission.BLUETOOTH_ADVERTISE" fixed="false"/>
+  </exception>
+
+  <exception
+    package="com.google.android.apps.photos"
+    sha256-cert-digest="3D:7A:12:23:01:9A:A3:9D:9E:A0:E3:43:6A:B7:C0:89:6B:FB:4F:B6:79:F4:DE:5F:E7:C2:3F:32:6C:8F:99:4A">
+    <!-- Grant media access to Photos APK -->
+    <permission name="android.permission.ACCESS_MEDIA_LOCATION" fixed="false"/>
+    <permission name="android.permission.READ_MEDIA_IMAGES" fixed="false"/>
+    <permission name="android.permission.READ_MEDIA_VIDEO" fixed="false"/>
+  </exception>
+
 </exceptions>
